@@ -22,10 +22,17 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry including="src/main/java|src/main/resources" kind="src" output="target/classes" path="Users/sksms/Documents/workspace-sts-3.9.14.RELEASE/GoalTech">
+	<classpathentry including="src/main/java|src/main/resources" kind="src" output="target/classes" path="Users/sksms/git/goalTechProject/GoalTech">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
