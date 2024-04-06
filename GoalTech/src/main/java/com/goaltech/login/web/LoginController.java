@@ -22,13 +22,7 @@ public class LoginController {
 	}
 	
 	
-	@ResponseBody
-	@PostMapping(value = "/login.do")
-	public saveProc(HttpServletRequest request, @ResponseBody UserVO vo) throws Exception{
-		
-		
-	}
-	
+
 	
 
 }
