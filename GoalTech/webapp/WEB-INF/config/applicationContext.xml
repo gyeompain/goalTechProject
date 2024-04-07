@@ -7,7 +7,28 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+	<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+	<property name="jdbcUrl" value="jdbc:mysql://localhost:3307/?amp;useSSL=false&amp;allowPublicKeyRetrieval=true"></property>
+	<property name="username" value="root"></property>
+	<property name="password" value="root"></property>
+</bean>
+
+<!-- HikariCP configuration -->
+<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+<constructor-arg ref="hikariConfig" />
+</bean>
+
+<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dataSource"/>
+	<property name="configLocation" value="classpath:sql-map-config.xml"/>
+</bean>
+
+
+
 <!-- model에 대한 정보 -->
 <context:component-scan base-package="com.goaltech.reserve">
 </context:component-scan>
+
+
 </beans>

@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form>
+id<input type="text" name="user_id"></br>
+pw<input type="text" name="user_pw">
 
+<input type="submit" value="·Î±×ÀÎ">
+</form>
 </body>
 </html>
