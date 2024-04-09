@@ -8,7 +8,6 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.goaltech.login.dao.LoginDAO;
 import com.goaltech.login.mapper.UserMapper;
 import com.goaltech.login.vo.UserVO;
 
@@ -24,13 +23,13 @@ public class LoginServiceImpl implements LoginService {
 		// 현재 날짜 구하기
 		LocalDate now = LocalDate.now();
 		// 포맷 정의
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/mm/dd");
 		// 포맷 적용
 		String formatedNow = now.format(formatter);
 		
 		String joindate = formatedNow;
 		String updated_at = formatedNow;
-		String user_status = "1";
+		String user_status = "1"; // 무슨 뜻이죠..?
 		String role_code = "2"; //역할코드 1.관리자 2. 사용자
 		
 		userVO.setJoindate(joindate);

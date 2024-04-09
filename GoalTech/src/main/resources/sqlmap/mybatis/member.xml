@@ -15,11 +15,6 @@
 		<result property="user_status" column="user_status"></result>
 		<result property="updated_at" column="updated_at"></result>
 	</resultMap>
-	
-	<select id="selectBlog" resultType="Blog">
-		select * from Blog where id =
-		#{id}
-	</select>
 
 
 	<insert id="insertUser" parameterType="UserVO">
