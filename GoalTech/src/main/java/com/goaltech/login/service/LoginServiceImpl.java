@@ -30,9 +30,13 @@ public class LoginServiceImpl implements LoginService {
 		
 		String joindate = formatedNow;
 		String updated_at = formatedNow;
+		String user_status = "1";
+		String role_code = "2"; //역할코드 1.관리자 2. 사용자
+		
 		userVO.setJoindate(joindate);
 		userVO.setUpdated_at(updated_at);
-		
+		userVO.setUser_status(user_status);
+		userVO.setRole_code(role_code);
 		
 		userMapper.insertMember(userVO);
 
