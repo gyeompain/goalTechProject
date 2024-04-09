@@ -1,5 +1,8 @@
 package com.goaltech.login.web;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,11 +32,14 @@ public class LoginController {
 	//@RequestMapping = 해당 요청값을 매핑해주는 어노테이션
 	@RequestMapping(value = "insertMember.do")
 	public void insertMember(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+				
 		//1. 폼에서 인자값 변수에 담기
 		String id = request.getParameter("user_id");
 		String pw = request.getParameter("user_pw");
 		String name = request.getParameter("user_name");
 		String phone = request.getParameter("user_phone");
+
 		
 		//2. vo에 값 담기
 		UserVO vo = new UserVO();
@@ -41,9 +47,9 @@ public class LoginController {
 		vo.setUser_pw(pw);
 		vo.setUser_name(name);
 		vo.setUser_phone(phone);
-		
+
 		//3. userVO에 Insert하기
-		int hi = loginService.insertUser(vo);
+		loginService.insertUser(vo);
 
 	}
 	

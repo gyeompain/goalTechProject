@@ -5,8 +5,8 @@ import com.goaltech.login.vo.UserVO;
 public interface LoginService {
 
 	/* 회원가입 */
-	public int insertUser(UserVO user) throws Exception;
-
+	public void insertUser(UserVO user) throws Exception;
+	
 	/* 로그인 */
 	public UserVO userLogin(UserVO user) throws Exception;
 
