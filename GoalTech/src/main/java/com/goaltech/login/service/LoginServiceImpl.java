@@ -16,10 +16,14 @@ public class LoginServiceImpl implements LoginService {
 	@Resource(name = "userMapper")
 	private UserMapper userMapper;
 	
+	
+	
+	
 	@Override
 	public int insertUser(UserVO user) throws Exception {
-		userMapper.insertMember(userVO);
-		return 1;
+		int result;
+		result = userMapper.insertMember(userVO);
+		return result;
 	}
 
 	@Override
