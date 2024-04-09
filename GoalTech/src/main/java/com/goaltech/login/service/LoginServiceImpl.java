@@ -18,7 +18,7 @@ public class LoginServiceImpl implements LoginService {
 	
 	@Override
 	public int insertUser(UserVO user) throws Exception {
-
+		userMapper.insertMember(userVO);
 		return 1;
 	}
 

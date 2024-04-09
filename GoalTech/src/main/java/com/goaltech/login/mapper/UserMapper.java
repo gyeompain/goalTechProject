@@ -8,4 +8,5 @@ import com.goaltech.login.vo.UserVO;
 public interface UserMapper {
 	
 	public void insertMember(UserVO userVO);
+	
 }
