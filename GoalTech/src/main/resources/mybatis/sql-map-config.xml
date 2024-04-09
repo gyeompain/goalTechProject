@@ -6,11 +6,8 @@
 <configuration>
 <!-- Alias 설정 -->
 <typeAliases>
-	<typeAlias alias="board" type="com.springbook.biz.board.boardVO"/>
+	<typeAlias alias="userVO" type="com.goaltech.login.vo.UserVO"/>
 </typeAliases>
-
-<!-- Properties 파일 설정 -->
-<properties resource="db.properties"/>
 
 
 </configuration>
