@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.goaltech.login.service.LoginService;
 import com.goaltech.login.vo.UserVO;
@@ -47,8 +48,9 @@ public class LoginController {
 		vo.setUser_phone(phone);
 
 		//3. userVO에 Insert하기
+		Object hi;
 		loginService.insertUser(vo);
-		
+		model.addAttribute(vo);
 		return "main";
 
 	}
@@ -58,7 +60,35 @@ public class LoginController {
 		return "com/login/join";
 	}
 	
+	@RequestMapping(value="login.do", method= RequestMethod.GET)
+	public String login() {
+		return "com/login/login";
+	}
 	
+	@RequestMapping(value="login_proc.do", method= RequestMethod.POST)
+	public String login_proc(HttpServletRequest request, HttpServletResponse response) {
+		
+		//1. 사용자 입력 정보 추출
+		String id = request.getParameter("user_id");
+		String pw = request.getParameter("user_pw");
+		
+		//2. DB 연동 처리
+		UserVO userVO = new UserVO();
+		userVO.setUser_id(id);
+		userVO.setUser_pw(pw);
+		
+		
+		//3. 화면 네비게이션
+		ModelAndView mav = new ModelAndView();
+
+		
+		loginService.userLogin(userVO);
+		return "main";
+	}
+
+	
+	
+		
 
 	
 

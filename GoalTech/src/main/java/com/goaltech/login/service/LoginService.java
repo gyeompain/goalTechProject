@@ -8,8 +8,8 @@ public interface LoginService {
 	public void insertUser(UserVO user) throws Exception;
 	
 	/* 로그인 */
-	public UserVO userLogin(UserVO user) throws Exception;
+	public UserVO selectUser(UserVO user) throws Exception;
 
 	/* 로그아웃 */
-	public void userLogout(UserVO user) throws Exception;
+	public void logoutUser(UserVO user) throws Exception;
 }

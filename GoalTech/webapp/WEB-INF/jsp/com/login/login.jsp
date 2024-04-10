@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<form>
+<form action="main.do">
 id<input type="text" name="user_id"></br>
 pw<input type="text" name="user_pw">
 
-<input type="submit" value="로그인">
+<input type="submit" value="濡쒓렇�씤">
 </form>
 </body>
 </html>

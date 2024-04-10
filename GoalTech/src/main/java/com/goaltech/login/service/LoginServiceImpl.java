@@ -13,8 +13,7 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	private UserMapper userMapper;
 
-	
-	
+		
 	@Override
 	public void insertUser(UserVO userVO) throws Exception {
 
@@ -31,12 +30,15 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public UserVO userLogin(UserVO user) throws Exception {
-		return null;
+	public UserVO selectUser(UserVO user) throws Exception {
+		
+		UserVO userVO;
+		return userVO;
+
 	}
 
 	@Override
-	public void userLogout(UserVO user) throws Exception {
+	public void logoutUser(UserVO user) throws Exception {
 
 	}
 

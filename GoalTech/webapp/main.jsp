@@ -9,7 +9,7 @@
 <body>
 hello
 
-<a href="login.jsp">login page 이동</a>
+<a href="login.do">login page 이동</a>
 <a href="join.do">join page 이동</a>
 </body>
 </html>
