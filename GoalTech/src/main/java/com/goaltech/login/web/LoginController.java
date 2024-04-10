@@ -1,13 +1,11 @@
 package com.goaltech.login.web;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,8 +28,8 @@ public class LoginController {
 	}
 	
 	//@RequestMapping = 해당 요청값을 매핑해주는 어노테이션
-	@RequestMapping(value = "insertMember.do")
-	public void insertMember(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	@RequestMapping(value = "insertMember.do", method= RequestMethod.POST)
+	public String insertMember(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception{
 
 				
 		//1. 폼에서 인자값 변수에 담기
@@ -50,7 +48,14 @@ public class LoginController {
 
 		//3. userVO에 Insert하기
 		loginService.insertUser(vo);
+		
+		return "main";
 
+	}
+	
+	@RequestMapping(value="join.do")
+	public String join() {
+		return "com/login/join";
 	}
 	
 	

@@ -7,7 +7,7 @@
 <title>Join</title>
 </head>
 <body>
-<form action="insertMember.do">
+<form action="insertMember.do" method="post">
 	<div class="member">
 		<!-- 1. 로고 -->
 		<img class="logo" src="./images/images2/logo-naver.png">
@@ -40,6 +40,5 @@
 		<input type="submit" value="가입 완료">
 </form>
 
-	</div>
 </body>
 </html>

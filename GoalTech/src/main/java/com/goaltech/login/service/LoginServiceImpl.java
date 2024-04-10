@@ -3,8 +3,7 @@ package com.goaltech.login.service;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import javax.annotation.Resource;
-
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +11,11 @@ import com.goaltech.login.mapper.UserMapper;
 import com.goaltech.login.vo.UserVO;
 
 @Service("loginService")
+@MapperScan("com.goaltech.login.mapper")
 public class LoginServiceImpl implements LoginService {
-	
-	@Resource(name = "userMapper")
+	@Autowired
 	private UserMapper userMapper;
+
 	
 	
 	@Override

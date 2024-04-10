@@ -9,7 +9,7 @@
 <body>
 hello
 
-<a href="/jsp/com/login/login.jsp">login page 이동</a>
-<a href="${pageContext.request.contextPath}/join.jsp">join page 이동</a>
+<a href="login.jsp">login page 이동</a>
+<a href="join.do">join page 이동</a>
 </body>
 </html>
