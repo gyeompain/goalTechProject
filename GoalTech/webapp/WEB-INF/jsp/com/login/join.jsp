@@ -14,7 +14,7 @@
 
 		<!-- 2. 필드 -->
 		<div class="field">
-			<b>아이디</b> <span class="placehold-text" name="user_id"><input type="text"></span>
+			<b>아이디</b> <span class="placehold-text" ><input type="text" name="user_id"></span>
 		</div>
 		<div class="field">
 			<b>비밀번호</b> <input class="userpw" type="password" name="user_pw">
