@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -20,6 +21,9 @@ public class LoginController {
 	//@Autowired라는 어노테이션으로 서비스 등록
 	@Autowired
 	private LoginService loginService;
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping(value = "/join", method = { RequestMethod.GET, RequestMethod.POST})
 	public String showJoinDetail(HttpServletRequest request, ModelMap model) throws Exception {
@@ -82,7 +86,7 @@ public class LoginController {
 		ModelAndView mav = new ModelAndView();
 
 		
-		loginService.userLogin(userVO);
+		loginService.selectUser(userVO);
 		return "main";
 	}
 
