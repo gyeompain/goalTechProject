@@ -41,5 +41,15 @@
  
 	</insert>
 	
+	<select id="selectUser" parameterType="UserVO" resultType="arraylist">
+	/* com.goaltech.login.mapper.UserMapper.selectUser */
+		SELECT *
+		FROM USER
+		WHERE USER_ID = '{#user_id}'
+		AND
+		USER_PW = '{#user_pw}'
+		
+	</select>
+	
 
 </mapper>

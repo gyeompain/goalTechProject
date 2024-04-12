@@ -12,4 +12,5 @@ public interface UserMapper {
 	
 	public void insertUserRole(UserVO userVO);
 	
+	public UserVO selectUser(UserVO userVO);
 }

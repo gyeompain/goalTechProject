@@ -22,8 +22,8 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 	
-	@Autowired
-	BCryptPasswordEncoder passwordEncoder;
+	//@Autowired
+	//BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping(value = "/join", method = { RequestMethod.GET, RequestMethod.POST})
 	public String showJoinDetail(HttpServletRequest request, ModelMap model) throws Exception {
@@ -70,31 +70,39 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="login_proc.do", method= RequestMethod.POST)
-	public String login_proc(HttpServletRequest request, HttpServletResponse response) {
+	public String loginProc(HttpServletRequest request) throws Exception {
 		
 		//1. 사용자 입력 정보 추출
 		String id = request.getParameter("user_id");
 		String pw = request.getParameter("user_pw");
+		
+		if(!isValidInput(id, pw)) {
+			return "login";
+		}
 		
 		//2. DB 연동 처리
 		UserVO userVO = new UserVO();
 		userVO.setUser_id(id);
 		userVO.setUser_pw(pw);
 		
-		
-		//3. 화면 네비게이션
-		ModelAndView mav = new ModelAndView();
+		//3. 사용자 인증
+		UserVO authenticatedUser = loginService.selectUser(userVO);
+		if(null!=authenticatedUser.getUser_name() && authenticatedUser !=null) {
+			System.out.println("로그인 후 메인 페이지로 이동");
+			return "redirect:/main";
+		}else {
+			System.out.println("로그인 화면으로 이동");
+			return "login";			
+		}
 
+	}
+	
+	private boolean isValidInput(String id, String pw) {
 		
-		loginService.selectUser(userVO);
-		return "main";
+		return true;
 	}
 
-	
-	
-		
 
-	
 
 }
 

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="main.do">
+<form action="login_proc.do" method="post">
 id<input type="text" name="user_id"></br>
 pw<input type="text" name="user_pw">
 
