@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.goaltech.login.mapper.UserMapper">
+	<resultMap type="UserVO" id="userResult">
+		<result property="user_id" column="user_id"></result>
+		<result property="role_code" column="role_code"></result>
+		<result property="user_pw" column="user_pw" />
+		<result property="user_name" column="user_name"></result>
+		<result property="user_phone" column="user_phone"></result>
+		<result property="joindate" column="joindate"></result>
+		<result property="user_status" column="user_status"></result>
+		<result property="updated_at" column="updated_at"></result>
+	</resultMap>
+
+
+	<insert id="insertUser" parameterType="UserVO">
+	  /* com.goaltech.login.mapper.UserMapper.insertUser */
+		INSERT INTO USER(
+		USER_ID,
+		ROLE_CODE,
+		USER_PW,
+		USER_NAME,
+		USER_PHONE,
+		JOINDATE,
+		USER_STATUS,
+		UPDATED_AT
+		) VALUES(
+		    #{user_id}
+		    ,#{role_code}
+		    ,#{user_pw}
+		    ,#{user_name}
+		    ,#{user_phone}
+		    ,now()
+		    ,#{user_status}
+		    ,now()
+		 )
+ 
+	</insert>
+	
+	<select id="selectUser" parameterType="UserVO" resultMap="userResult">
+	/* com.goaltech.login.mapper.UserMapper.selectUser */
+		SELECT *
+		FROM USER
+		WHERE USER_ID = #{user_id}
+		AND
+		USER_PW = #{user_pw}
+		
+	</select>
+	
+
+</mapper>

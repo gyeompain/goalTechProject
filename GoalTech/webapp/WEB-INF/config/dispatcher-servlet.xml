@@ -9,6 +9,7 @@
 
 	<mvc:annotation-driven></mvc:annotation-driven>
 
+
 	<!-- view의 경로, 확장자를 정해주는 부분 : DispatcherServlet이 이 경로를 따라서 컨트롤러가 날린 뷰의 이름에 
 		해당하는 뷰가 있는지 찾아봄 -->
 	<bean
@@ -19,7 +20,7 @@
 
 	<!-- model에 대한 정보 -->
 	<context:component-scan
-		base-package="com.goaltech.footReserve"></context:component-scan>
+		base-package="com.goaltech"></context:component-scan>
 
 
 </beans>

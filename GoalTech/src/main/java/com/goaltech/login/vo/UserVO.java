@@ -1,9 +1,11 @@
 package com.goaltech.login.vo;
 
+
+
 public class UserVO {
 
 	private String user_id		=""; //회원아이디
-	private String role_code	=""; //사용자ID
+	private String role_code	=""; //역할코드
 	private String user_pw		=""; //회원비밀번호
 	private String user_name	=""; //회원이름
 	private String user_phone	=""; //회원전화번호

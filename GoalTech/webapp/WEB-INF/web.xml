@@ -36,6 +36,7 @@
 		<param-value>/WEB-INF/config/dispatcher-servlet.xml</param-value>
 	</init-param>
 	</servlet>
+	
 	<!-- .do로 끝나는 url의 요청을 받아서 DispatcherServlet에서 처리한다. -->
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
@@ -57,11 +58,10 @@
 	</filter-mapping>
 	
 
-
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
-    <welcome-file>NewFile.jsp</welcome-file>
+    <welcome-file>main.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
