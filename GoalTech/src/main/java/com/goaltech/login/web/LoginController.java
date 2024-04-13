@@ -68,7 +68,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="login_proc.do", method= RequestMethod.POST)
-	public String loginProc(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
+	public String loginProc(HttpServletRequest request, HttpServletResponse response, ModelMap model, HttpSession session) throws Exception {
 		
 		//1. 사용자 입력 정보 추출
 		String id = request.getParameter("user_id");
@@ -91,14 +91,15 @@ public class LoginController {
 		if(null!=authenticatedUser.getUser_name() && authenticatedUser !=null) {
 			
 			System.out.println("로그인 후 메인 페이지로 이동");
+			
+			session.setAttribute("User", authenticatedUser);
+			model.addAttribute("User", authenticatedUser);
+			
 			return "main";
 		}else {
 			System.out.println("로그인 화면으로 이동");
 			
-			HttpSession session = request.getSession();
-			
-			session.setAttribute("User", authenticatedUser);
-			model.addAttribute("User", authenticatedUser);
+
 			
 			return "login";			
 		}
