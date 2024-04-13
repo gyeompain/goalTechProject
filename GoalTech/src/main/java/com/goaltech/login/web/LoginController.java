@@ -94,6 +94,12 @@ public class LoginController {
 			return "main";
 		}else {
 			System.out.println("로그인 화면으로 이동");
+			
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("User", authenticatedUser);
+			model.addAttribute("User", authenticatedUser);
+			
 			return "login";			
 		}
 
