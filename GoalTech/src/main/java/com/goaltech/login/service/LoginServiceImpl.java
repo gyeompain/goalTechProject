@@ -30,10 +30,9 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public UserVO selectUser(UserVO user) throws Exception {
-		
-		UserVO userVO;
-		return userVO;
+	public UserVO selectUser(UserVO userVO) throws Exception {
+		UserVO vo = userMapper.selectUser(userVO);
+		return vo;
 
 	}
 

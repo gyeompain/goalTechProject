@@ -9,7 +9,7 @@
 <configuration>
 	<!-- Alias 설정 -->
 	<typeAliases>
-		<typeAlias alias="userVO"
+		<typeAlias alias="UserVO"
 			type="com.goaltech.login.vo.UserVO" />
 	</typeAliases>
 

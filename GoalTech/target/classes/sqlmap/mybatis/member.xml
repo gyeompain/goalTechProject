@@ -5,7 +5,7 @@
 
 
 <mapper namespace="com.goaltech.login.mapper.UserMapper">
-	<resultMap type="userVO" id="userResult">
+	<resultMap type="UserVO" id="userResult">
 		<result property="user_id" column="user_id"></result>
 		<result property="role_code" column="role_code"></result>
 		<result property="user_pw" column="user_pw" />
@@ -40,6 +40,16 @@
 		 )
  
 	</insert>
+	
+	<select id="selectUser" parameterType="UserVO" resultMap="userResult">
+	/* com.goaltech.login.mapper.UserMapper.selectUser */
+		SELECT *
+		FROM USER
+		WHERE USER_ID = #{user_id}
+		AND
+		USER_PW = #{user_pw}
+		
+	</select>
 	
 
 </mapper>

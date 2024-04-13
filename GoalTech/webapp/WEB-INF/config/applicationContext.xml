@@ -27,6 +27,7 @@
 
 </bean>
 
+
 <!-- model에 대한 정보 -->
 <context:component-scan base-package="com.goaltech.reserve">
 </context:component-scan>
