@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -21,8 +22,8 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 	
-	//@Autowired
-	//BCryptPasswordEncoder passwordEncoder;
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping(value = "/join", method = { RequestMethod.GET, RequestMethod.POST})
 	public String showJoinDetail(HttpServletRequest request, ModelMap model) throws Exception {
@@ -82,7 +83,7 @@ public class LoginController {
 		//2. DB 연동 처리
 		UserVO userVO = new UserVO();
 		userVO.setUser_id(id);
-		userVO.setUser_pw(pw);
+		userVO.setUser_pw(passwordEncoder.encode(pw));
 		
 		
 		
