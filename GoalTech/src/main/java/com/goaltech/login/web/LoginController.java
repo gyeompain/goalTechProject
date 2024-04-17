@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -21,8 +22,8 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 	
-	//@Autowired
-	//BCryptPasswordEncoder passwordEncoder;
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping(value = "/join", method = { RequestMethod.GET, RequestMethod.POST})
 	public String showJoinDetail(HttpServletRequest request, ModelMap model) throws Exception {
@@ -68,7 +69,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="login_proc.do", method= RequestMethod.POST)
-	public String loginProc(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
+	public String loginProc(HttpServletRequest request, HttpServletResponse response, ModelMap model, HttpSession session) throws Exception {
 		
 		//1. 사용자 입력 정보 추출
 		String id = request.getParameter("user_id");
@@ -82,7 +83,7 @@ public class LoginController {
 		//2. DB 연동 처리
 		UserVO userVO = new UserVO();
 		userVO.setUser_id(id);
-		userVO.setUser_pw(pw);
+		userVO.setUser_pw(passwordEncoder.encode(pw));
 		
 		
 		
@@ -91,9 +92,16 @@ public class LoginController {
 		if(null!=authenticatedUser.getUser_name() && authenticatedUser !=null) {
 			
 			System.out.println("로그인 후 메인 페이지로 이동");
+			
+			session.setAttribute("User", authenticatedUser);
+			model.addAttribute("User", authenticatedUser);
+			
 			return "main";
 		}else {
 			System.out.println("로그인 화면으로 이동");
+			
+
+			
 			return "login";			
 		}
 
