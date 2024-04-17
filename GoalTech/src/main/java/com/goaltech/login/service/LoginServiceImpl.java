@@ -40,5 +40,12 @@ public class LoginServiceImpl implements LoginService {
 	public void logoutUser(UserVO user) throws Exception {
 
 	}
+	
+	@Override
+	public String selectPassword(UserVO user) throws Exception{
+		String encodePassword = userMapper.selectPassword(user);
+		
+		return encodePassword;
+	}
 
 }
