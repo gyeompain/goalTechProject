@@ -124,9 +124,5 @@ public class LoginController {
 		return "login";
 	}
 
-	private boolean isValidInput(String id, String pw) {
-
-		return true;
-	}
 
 }
