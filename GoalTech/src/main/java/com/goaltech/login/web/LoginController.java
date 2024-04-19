@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -17,7 +19,9 @@ import com.goaltech.login.vo.UserVO;
 
 @Controller
 public class LoginController {
-
+	
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+	
 	// @Autowired라는 어노테이션으로 서비스 등록
 	@Autowired
 	private LoginService loginService;
@@ -87,33 +91,37 @@ public class LoginController {
 		userVO.setUser_id(id);
 
 		// 암호화된 비밀번호 변수 담기
-		String encodePassword = loginService.selectPassword(userVO);
+		String encodePassword = loginService.selectPassword(pw);
 
 		if (passwordEncoder.matches(pw, encodePassword)) {
 
 			/*
 			 * 로그인 로직 수정사항 1. 사용자가 로그인한 비밀번호를 변수에 담는다. 2. 인코더 매치가 되면 암호화된 비밀번호를 꺼낸다.
 			 */
+			
 			userVO.setUser_id(id);
 			userVO.setUser_pw(passwordEncoder.encode(pw));
 
 			UserVO authenticatedUser = loginService.selectUser(userVO);
+			logger.info("확인용1");
 
 			if (null != authenticatedUser.getUser_name() && authenticatedUser != null) {
-
+				logger.info("확인용2");		
 				System.out.println("로그인 후 메인 페이지로 이동");
-
+				logger.info("확인용3");
 				session.setAttribute("User", authenticatedUser);
 				model.addAttribute("User", authenticatedUser);
+				return "redirect:/main.do";
 
 			} else {
 				System.out.println("로그인 화면으로 이동");
+				logger.info("확인용4");
 				return "login";
 			}
 
 		}
-
-		return "redirect:/main.do";
+		logger.info("확인용5");
+		return "login";
 	}
 
 	private boolean isValidInput(String id, String pw) {

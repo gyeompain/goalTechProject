@@ -42,8 +42,8 @@ public class LoginServiceImpl implements LoginService {
 	}
 	
 	@Override
-	public String selectPassword(UserVO user) throws Exception{
-		String encodePassword = userMapper.selectPassword(user);
+	public String selectPassword(String password) throws Exception{
+		String encodePassword = userMapper.selectPassword(password);
 		
 		return encodePassword;
 	}

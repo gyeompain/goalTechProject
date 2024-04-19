@@ -14,5 +14,5 @@ public interface UserMapper {
 	
 	public UserVO selectUser(UserVO userVO);
 	
-	public String selectPassword(UserVO userVO);
+	public String selectPassword(String password);
 }

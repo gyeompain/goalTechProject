@@ -14,5 +14,5 @@ public interface LoginService {
 	public void logoutUser(UserVO user) throws Exception;
 	
 	/* 암호화 비밀번호 가져오기 */
-	public String selectPassword(UserVO user) throws Exception;
+	public String selectPassword(String password) throws Exception;
 }

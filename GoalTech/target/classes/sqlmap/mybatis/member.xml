@@ -51,7 +51,7 @@
 		
 	</select>
 	
-	<select id="selectPassword" parameterType="String" resultMap="userResult">
+	<select id="selectPassword" parameterType="String" resultType="java.lang.String">
 	
 		SELECT USER_PW
 		FROM USER
