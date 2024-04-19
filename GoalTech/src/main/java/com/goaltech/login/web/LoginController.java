@@ -34,7 +34,7 @@ public class LoginController {
 
 	// @RequestMapping = 해당 요청값을 매핑해주는 어노테이션
 	@RequestMapping(value = "insertMember.do", method = RequestMethod.POST)
-	public String insertMember(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+	public String insertMember(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
 
 		// 1. 폼에서 인자값 변수에 담기
 		String id = request.getParameter("user_id");
@@ -53,12 +53,13 @@ public class LoginController {
 		// 3. userVO에 Insert하기
 		loginService.insertUser(vo);
 		model.addAttribute(vo);
+		session.setAttribute("User", vo);
 		return "redirect:/main.do";
 
 	}
 
 	@RequestMapping(value = "main.do")
-	public String main(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String main(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
 
 		return "main";
 	}
