@@ -75,6 +75,7 @@ public class LoginController {
 		String id = request.getParameter("user_id");
 		String pw = request.getParameter("user_pw");
 		
+		
 		/*if(!isValidInput(id, pw)) {
 			return "login";
 		}
@@ -107,12 +108,6 @@ public class LoginController {
 
 	}
 	
-	
-	private boolean isValidInput(String id, String pw) {
-		
-		return true;
-	}
-
 
 
 }
