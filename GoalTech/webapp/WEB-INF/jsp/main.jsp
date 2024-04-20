@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <%
 
 HttpSession sessions = request.getSession();
@@ -21,7 +22,11 @@ if(user.getUser_id() !=null){
 	out.print("Hello");
 }
 %>
+
 <a href="login.do">login page 이동</a>
 <a href="join.do">join page 이동</a>
+
+
+
 </body>
 </html>

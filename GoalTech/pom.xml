@@ -7,6 +7,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+
 		<sourceDirectory>.</sourceDirectory>
 		<plugins>
 			<plugin>
@@ -107,6 +113,13 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 			<version>6.2.1</version>
+		</dependency>
+
+		<!-- logback-core -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.4.14</version>
 		</dependency>
 
 		<!-- logback-classic -->
