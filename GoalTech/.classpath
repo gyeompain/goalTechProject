@@ -27,12 +27,15 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-14">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
+<<<<<<< HEAD
 		</attributes>
 	</classpathentry>
 	<classpathentry including="src/main/java|src/main/resources" kind="src" output="target/classes" path="Users/asus/Desktop/git/GoalTech">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
+=======
+>>>>>>> 1e2a629b97d85129448b9bcf8df76ac3782167cb
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>

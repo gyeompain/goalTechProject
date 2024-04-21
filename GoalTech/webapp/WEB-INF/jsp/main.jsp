@@ -1,15 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="javax.servlet.http.HttpSession" %>
+<%@ page import="com.goaltech.login.vo.UserVO" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-hello $
 
-<a href="login.do">login page ÀÌµ¿</a>
-<a href="join.do">join page ÀÌµ¿</a>
+<%
+
+HttpSession sessions = request.getSession();
+UserVO user = (UserVO)session.getAttribute("User");
+
+
+if(user.getUser_id() !=null){
+	out.print("Hello "+ user.getUser_id()) ;
+}else{
+	out.print("Hello");
+}
+%>
+
+<a href="login.do">login page ì´ë™</a>
+<a href="join.do">join page ì´ë™</a>
+
+
+
 </body>
 </html>

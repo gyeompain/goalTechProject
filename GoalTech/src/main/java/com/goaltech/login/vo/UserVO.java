@@ -1,12 +1,19 @@
 package com.goaltech.login.vo;
 
-
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 public class UserVO {
-
+	@NotEmpty(message="회원 아이디 입력은 필수입니다.")
+	@Pattern(
+	        regexp = "^[a-z]+[a-z0-9]{3,30}$",
+	        message = "아이디는 알파벳 소문자와 숫자를 사용하며, 숫자로 시작할 수 없습니다. (3~30글자)"
+	)
 	private String user_id		=""; //회원아이디
 	private String role_code	=""; //역할코드
+	@NotEmpty(message="회원 비밀번호 입력은 필수입니다.")
 	private String user_pw		=""; //회원비밀번호
+	@NotEmpty(message="회원 이름 입력은 필수입니다.")
 	private String user_name	=""; //회원이름
 	private String user_phone	=""; //회원전화번호
 	private String joindate		=""; //가입일자
