@@ -3,18 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 
-
-
-
 <configuration>
 	<!-- Alias 설정 -->
 	<typeAliases>
 		<typeAlias alias="UserVO"
 			type="com.goaltech.login.vo.UserVO" />
+			
+		<typeAlias alias="GroundRuntimeResponseVO"
+			type="com.goaltech.reserve.vo.GroundRuntimeResponseVO" />
+		<typeAlias alias="ReservationRequestVO"
+			type="com.goaltech.reserve.vo.ReservationRequestVO" />
 	</typeAliases>
 
 
 	<mappers>
 		<mapper resource="/sqlmap/mybatis/member.xml" />
+		<mapper resource="/sqlmap/mybatis/reservation.xml" />
 	</mappers>
 </configuration>

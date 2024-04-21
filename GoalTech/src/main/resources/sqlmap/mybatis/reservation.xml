@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace = "com.goaltech.reserve.mapper.ReserveMapper">
+	<resultMap type = "GroundRuntimeResponseVO" id = "GroundRuntimeResponseVO">
+		<result property="id" column="GROUND_ID" />
+		<result property="startTime" column="START_TIME" />
+		<result property="endTime" column="END_TIME" />
+	</resultMap>
+	
+	<resultMap type = "ReservationRequestVO" id = "ReservationRequestVO">
+		<result property="permit" column="PERMIT" />
+		<result property="user_id" column="USER_ID" />
+		<result property="ground_id" column="GROUND_ID" />
+		<result property="book_code" column="book_code" />
+		<result property="book_datetime" column="book_datetime" />
+		<result property="time_code_id" column="TIME_CODE_ID" />
+	</resultMap>	
+	
+	<select id="selectByRuntime" parameterType="String" resultMap="GroundRuntimeResponseVO">
+		SELECT GROUND_ID, START_TIME, END_TIME
+		FROM GROUND
+		WHERE GROUND_NAME = #{ground_name}
+	</select>
+	
+	<insert id="insertReservation">
+		INSERT INTO BOOK(
+			PERMIT,
+			USER_ID,
+			GROUND_ID,
+			book_code,
+			book_datetime,
+			TIME_CODE_ID
+		) VALUES (
+			#{permit},
+			#{user_id},
+			#{ground_id},
+			#{book_code},
+			#{book_datetime},
+			#{time_code_id}
+		)
+		
+	</insert>
+</mapper>

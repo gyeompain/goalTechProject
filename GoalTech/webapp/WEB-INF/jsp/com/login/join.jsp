@@ -38,6 +38,7 @@
 
 		<!-- 6. 가입하기 버튼 -->
 		<input type="submit" value="가입 완료">
+	</div>
 </form>
 
 </body>

@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="login_proc.do" method="post">
-id<input type="text" name="user_id"></br>
+id<input type="text" name="user_id"> <br>
 pw<input type="text" name="user_pw">
 
 <input type="submit" value="로그인">
