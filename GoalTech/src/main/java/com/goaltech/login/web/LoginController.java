@@ -109,7 +109,7 @@ public class LoginController {
 			userVO.setUser_pw(passwordEncoder.encode(pw));
 
 	}
-	
+	/*
 			if (null != authenticatedUser.getUser_name() && authenticatedUser != null) {
 				logger.info("확인용2");		
 				System.out.println("로그인 후 메인 페이지로 이동");
@@ -126,8 +126,11 @@ public class LoginController {
 
 		}
 		logger.info("확인용5");
+		
+	}
+	
+	*/
 		return "login";
 	}
-
-
 }
+

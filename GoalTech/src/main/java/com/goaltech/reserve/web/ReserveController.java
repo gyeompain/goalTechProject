@@ -21,7 +21,7 @@ public class ReserveController {
 	
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
 	public String showReservations(Model model) {
-		// UTC로 오늘 날짜 가져오기
+		// UTC濡� �삤�뒛 �궇吏� 媛��졇�삤湲�
 		List<Long> periodDays = reserveServiceImpl.findPeriodDays();
 		GroundRuntimeResponseVO runtimeVO = reserveServiceImpl.selectByRuntime();
 		model.addAttribute("periodDays", periodDays);
@@ -37,8 +37,8 @@ public class ReserveController {
 	
 	@RequestMapping(value = "/reserve.do", method = RequestMethod.POST)
 	public String reserve() {
-		// TDOO : 화면에서 선택한 날짜와 시간 가져오기
-		// TODO : 예약하기
+		// TDOO : �솕硫댁뿉�꽌 �꽑�깮�븳 �궇吏쒖� �떆媛� 媛��졇�삤湲�
+		// TODO : �삁�빟�븯湲�
 		reserveServiceImpl.insertReservation();
 		return "redirect:list.do";
 	}
