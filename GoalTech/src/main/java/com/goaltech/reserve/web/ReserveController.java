@@ -19,7 +19,7 @@ public class ReserveController {
 	@Autowired
 	private ReserveServiceImpl reserveServiceImpl;
 	
-	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
+	@RequestMapping(value = "list.do", method = RequestMethod.GET)
 	public String showReservations(Model model) {
 		// UTC濡� �삤�뒛 �궇吏� 媛��졇�삤湲�
 		List<Long> periodDays = reserveServiceImpl.findPeriodDays();
