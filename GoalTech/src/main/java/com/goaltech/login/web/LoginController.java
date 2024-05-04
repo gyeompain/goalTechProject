@@ -19,9 +19,9 @@ import com.goaltech.login.vo.UserVO;
 
 @Controller
 public class LoginController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-	
+
 	// @Autowired라는 어노테이션으로 서비스 등록
 	@Autowired
 	private LoginService loginService;
@@ -38,7 +38,8 @@ public class LoginController {
 
 	// @RequestMapping = 해당 요청값을 매핑해주는 어노테이션
 	@RequestMapping(value = "insertMember.do", method = RequestMethod.POST)
-	public String insertMember(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
+	public String insertMember(HttpServletRequest request, HttpServletResponse response, Model model,
+			HttpSession session) throws Exception {
 
 		// 1. 폼에서 인자값 변수에 담기
 		String id = request.getParameter("user_id");
@@ -85,52 +86,38 @@ public class LoginController {
 		// 1. 사용자 입력 정보 추출
 		String id = request.getParameter("user_id");
 		String pw = request.getParameter("user_pw");
-		
-		
-		/*if(!isValidInput(id, pw)) {
-			return "login";
-		}
-		*/
-		
-		//2. DB 연동 처리
+
+		// 2. DB 연동 처리
 		UserVO userVO = new UserVO();
 		userVO.setUser_id(id);
 
 		// 암호화된 비밀번호 변수 담기
-		String encodePassword = loginService.selectPassword(pw);
+		String encodePassword = loginService.selectPassword(id);
 
 		if (passwordEncoder.matches(pw, encodePassword)) {
-
-			/*
-			 * 로그인 로직 수정사항 1. 사용자가 로그인한 비밀번호를 변수에 담는다. 2. 인코더 매치가 되면 암호화된 비밀번호를 꺼낸다.
-			 */
+			// 로그인 로직 수정사항 1. 사용자가 로그인한 비밀번호를 변수에 담는다. 2. 인코더 매치가 되면 암호화된 비밀번호를 꺼낸다.
 			
-			userVO.setUser_id(id);
-			userVO.setUser_pw(passwordEncoder.encode(pw));
-
-	}
-	/*
-			if (null != authenticatedUser.getUser_name() && authenticatedUser != null) {
-				logger.info("확인용2");		
+			if (null != userVO.getUser_name() && userVO != null) {
+				logger.info("확인용2");
 				System.out.println("로그인 후 메인 페이지로 이동");
 				logger.info("확인용3");
-				session.setAttribute("User", authenticatedUser);
-				model.addAttribute("User", authenticatedUser);
+				session.setAttribute("User", userVO);
+				model.addAttribute("User", userVO);
 				return "redirect:/main.do";
-
+				
 			} else {
 				System.out.println("로그인 화면으로 이동");
 				logger.info("확인용4");
-				return "login";
+				return "com/login/login";
 			}
-
+			
+			
+		} else {
+			System.out.println("테스트");
+			return "com/login/login";
 		}
-		logger.info("확인용5");
-		
-	}
-	
-	*/
-		return "login";
-	}
-}
 
+
+	}
+
+}
