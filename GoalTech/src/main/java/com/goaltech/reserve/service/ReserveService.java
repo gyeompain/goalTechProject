@@ -1,8 +1,6 @@
 package com.goaltech.reserve.service;
-
-import java.util.List;
-
 import com.goaltech.reserve.vo.GroundRuntimeResponseVO;
+import java.util.List;
 
 public interface ReserveService {
 

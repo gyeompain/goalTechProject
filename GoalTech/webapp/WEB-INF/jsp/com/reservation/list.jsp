@@ -10,7 +10,7 @@
 <body>
 <h1>A구장 시작시간 : ${runtimeVO.startTime}</h1>
 <h1>A구장 종료시간 : ${runtimeVO.endTime}</h1>
-<a id="dateOutput" href="reservationform.do"></a>
+	<a id="dateOutput" href="reservationform.do"></a>
 
 <ul>
 	<% List<Long> days = (List<Long>)request.getAttribute("periodDays");

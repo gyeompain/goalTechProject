@@ -1,5 +1,4 @@
 package com.goaltech.login.service;
-
 import com.goaltech.login.vo.UserVO;
 
 public interface LoginService {
