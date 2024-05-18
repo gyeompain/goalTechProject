@@ -1,8 +1,10 @@
 package com.goaltech.reserve.service;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.goaltech.reserve.mapper.ReserveMapper;
 import com.goaltech.reserve.vo.GroundRuntimeResponseVO;
+import com.goaltech.reserve.vo.ReservationListVO;
 import com.goaltech.reserve.vo.ReservationRequestVO;
 
 @Service
@@ -33,11 +36,23 @@ public class ReserveServiceImpl implements ReserveService {
 	}
 	
 	@Override
-	public GroundRuntimeResponseVO selectByRuntime() {
-		String ground_name = "A";
-		GroundRuntimeResponseVO runtimeVO = reserveMapper.selectByRuntime(ground_name);
+	public GroundRuntimeResponseVO selectByRuntime(Long code) {
+		Long ground_id = code;
+		GroundRuntimeResponseVO runtimeVO = reserveMapper.selectByRuntime(ground_id);
 		return runtimeVO;
 	}
+	
+	@Override
+	public ReservationListVO selectByList(String code,String date) {
+		Date now = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+		//String today = formatter.format(now);
+		String today = "20240518";
+		String ground_id = "01";
+		ReservationListVO listVO = reserveMapper.selectByList(ground_id,today);
+		return listVO;
+	}	
+
 	
 	@Override
 	public void insertReservation() {
@@ -51,5 +66,5 @@ public class ReserveServiceImpl implements ReserveService {
 		
 		reserveMapper.insertReservation(requestVO);
 	}
-	
+
 }

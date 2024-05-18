@@ -2,10 +2,18 @@ package com.goaltech.reserve.vo;
 
 public class GroundRuntimeResponseVO {
 	
+	private String name;
 	private int id;
 	private String startTime;
 	private String endTime;
 	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getId() {
 		return id;
 	}
