@@ -13,7 +13,10 @@
 			type="com.goaltech.reserve.vo.GroundRuntimeResponseVO" />
 		<typeAlias alias="ReservationRequestVO"
 			type="com.goaltech.reserve.vo.ReservationRequestVO" />
+		<typeAlias alias="ReservationListVO"
+			type="com.goaltech.reserve.vo.ReservationListVO" />
 	</typeAliases>
+	
 
 
 	<mappers>

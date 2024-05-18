@@ -3,6 +3,7 @@ package com.goaltech.reserve.web;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,10 +30,11 @@ public class ReserveController {
 	private ReserveService reserveService;
 	
 	
-	@RequestMapping(value = "list.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String showReservations(Model model)throws Exception {
+	@RequestMapping(value = "list.do", method = { RequestMethod.GET})
+	public String showReservations(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception {
 		List<Long> periodDays = reserveService.findPeriodDays();
-		GroundRuntimeResponseVO runtimeVO = reserveService.selectByRuntime();
+	    Long num = Long.parseLong(request.getParameter("code"));
+		GroundRuntimeResponseVO runtimeVO = reserveService.selectByRuntime(num);
 		model.addAttribute("periodDays", periodDays);
 		model.addAttribute("runtimeVO", runtimeVO);
 		return "com/reservation/list";

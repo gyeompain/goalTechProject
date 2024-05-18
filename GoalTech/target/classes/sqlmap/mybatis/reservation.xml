@@ -5,9 +5,18 @@
   
 <mapper namespace = "com.goaltech.reserve.mapper.ReserveMapper">
 	<resultMap type = "GroundRuntimeResponseVO" id = "GroundRuntimeResponseVO">
+	    <result property="name" column="GROUND_NAME" />
 		<result property="id" column="GROUND_ID" />
 		<result property="startTime" column="START_TIME" />
 		<result property="endTime" column="END_TIME" />
+	</resultMap>
+	
+	<resultMap type = "ReservationListVO" id = "ReservationListVO">
+	    <result property="book_date" column="bc.book_date" />
+		<result property="time_code_id" column="bc.TIME_CODE_ID" />
+		<result property="start_time" column="bc.START_TIME" />
+		<result property="end_time" column="bc.END_TIME" />
+		<result property="user_id" column="b.id" />
 	</resultMap>
 	
 	<resultMap type = "ReservationRequestVO" id = "ReservationRequestVO">
@@ -19,11 +28,34 @@
 		<result property="time_code_id" column="TIME_CODE_ID" />
 	</resultMap>	
 	
-	<select id="selectByRuntime" parameterType="String" resultMap="GroundRuntimeResponseVO">
-		SELECT GROUND_ID, START_TIME, END_TIME
+	<select id="selectByRuntime" parameterType="Long" resultMap="GroundRuntimeResponseVO">
+		SELECT GROUND_NAME,GROUND_ID, START_TIME, END_TIME
 		FROM GROUND
-		WHERE GROUND_NAME = #{ground_name}
+		WHERE GROUND_ID = #{ground_id}
 	</select>
+	
+	<select id="selectByList" parameterType="String" resultMap="ReservationListVO">
+		<![CDATA[
+		SELECT bc.book_date,bc.TIME_CODE_ID,bc.START_TIME, bc.END_TIME, b.id
+		from (
+		SELECT book_date,TIME_CODE_ID,START_TIME,END_TIME
+		from
+		(
+			WITH RECURSIVE date_range AS ( 
+				SELECT STR_TO_DATE(${today}, '%Y%m%d') AS book_date
+					UNION ALL 	
+				SELECT DATE_ADD(_before.book_date, INTERVAL 1 DAY) AS book_date
+				FROM date_range AS _before
+				WHERE DATEDIFF(_before.book_date, STR_TO_DATE(${today}, '%Y%m%d')) < 14
+			) 
+			SELECT book_date FROM date_range) sdate,
+			TIME_CODE ) bc
+		left join (select * from BOOK WHERE PERMIT ='1')b on bc.TIME_CODE_ID  = b.TIME_CODE_ID and DATE_FORMAT(bc.book_date,'%Y-%m-%d') = DATE_FORMAT(b.book_datetime,'%Y-%m-%d')
+		where bc.time_code_id BETWEEN (SELECT g.START_TIME  from GROUND g where g.GROUND_ID = ${ground_id} ) and (SELECT g.END_TIME  from GROUND g where g.GROUND_ID =${ground_id})
+		ORDER by bc.book_date, bc.time_code_id
+		]]>
+	</select>
+	
 	
 	<insert id="insertReservation">
 		INSERT INTO BOOK(
