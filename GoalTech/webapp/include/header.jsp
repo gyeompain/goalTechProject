@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.goaltech.login.vo.UserVO"%>
+ <!-- 로그인 시 아이디 세션 받아오기 -->
+<% UserVO user =(UserVO)session.getAttribute("User");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,8 @@
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
+
+
 <div class="header">
   <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
     <div class="col-md-3 mb-2 mb-md-0">
@@ -24,8 +29,13 @@
     <div class="col-md-3 text-end">
       <i class="bi bi-calendar-check-fill fs-3" style="vertical-align:middle;"></i>
       <i class="bi bi-person-circle fs-3" style="vertical-align:middle;"></i>
+      <% %>
+      
+      <!-- 로그인 했을 시 메뉴처리 -->
+      <%if(user==null) {%>
       <a href="login.do" class="btn btn-outline-primary me-2" tabindex="-1" role="button" aria-disabled="true">로그인</a>
       <a href="join.do" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">회원가입</a>
     </div>
+    <%} %>
   </header>
 </div>

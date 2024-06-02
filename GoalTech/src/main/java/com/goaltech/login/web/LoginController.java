@@ -35,7 +35,7 @@ public class LoginController {
 		return "com.login.join";
 
 	}
-
+	
 	// @RequestMapping = 해당 요청값을 매핑해주는 어노테이션
 	@RequestMapping(value = "insertMember.do", method = RequestMethod.POST)
 	public String insertMember(HttpServletRequest request, HttpServletResponse response, Model model,
@@ -59,14 +59,14 @@ public class LoginController {
 		loginService.insertUser(vo);
 		model.addAttribute(vo);
 		session.setAttribute("User", vo);
-		return "redirect:/main.do";
+		return "redirect:webapp/main.jsp";
 
 	}
 
 	@RequestMapping(value = "main.do")
 	public String main(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
 
-		return "main";
+		return "webapp/main.jsp";
 	}
 
 	@RequestMapping(value = "join.do")
@@ -103,7 +103,7 @@ public class LoginController {
 				logger.info("확인용3");
 				session.setAttribute("User", userVO);
 				model.addAttribute("User", userVO);
-				return "redirect:/main.do";
+				return "redirect:webapp/main.jsp";
 				
 			} else {
 				System.out.println("로그인 화면으로 이동");
