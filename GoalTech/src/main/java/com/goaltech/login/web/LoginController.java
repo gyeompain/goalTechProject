@@ -59,24 +59,24 @@ public class LoginController {
 		loginService.insertUser(vo);
 		model.addAttribute(vo);
 		session.setAttribute("User", vo);
-		return "redirect:webapp/main.jsp";
+		return "redirect:main.jsp";
 
 	}
 
 	@RequestMapping(value = "main.do")
 	public String main(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
 
-		return "webapp/main.jsp";
+		return "main";
 	}
 
 	@RequestMapping(value = "join.do")
 	public String join() {
-		return "com/login/join";
+		return "/com/login/join";
 	}
 
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	public String login() {
-		return "com/login/login";
+		return "/com/login/login";
 	}
 
 	@RequestMapping(value = "login_proc.do", method = RequestMethod.POST)
@@ -103,7 +103,7 @@ public class LoginController {
 				logger.info("확인용3");
 				session.setAttribute("User", userVO);
 				model.addAttribute("User", userVO);
-				return "redirect:webapp/main.jsp";
+				return "main";
 				
 			} else {
 				System.out.println("로그인 화면으로 이동");
