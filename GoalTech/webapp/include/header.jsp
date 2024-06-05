@@ -24,6 +24,7 @@
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
       <li><a href="." class="nav-link px-2 link-secondary">홈</a></li>
       <li><a href="list.do" class="nav-link px-2">예약하기</a></li>
+      <li><a href="list.do" class="nav-link px-2">예약하기</a></li>
     </ul>
 
     <div class="col-md-3 text-end">
