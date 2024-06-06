@@ -6,10 +6,10 @@
 </script>
 <div class="container">
 	<div>
-		hello
-		11
-		<a href="login.do">login page 이동</a>
-		<a href="join.do">join page 이동</a>
+	<img src ="/img/main_01.png">
+	</div>
+	<div>
+
 		<a href="list.do?code=01">A구장</a>
 		<a href="list.do?code=02">B구장</a>
 	</div>
