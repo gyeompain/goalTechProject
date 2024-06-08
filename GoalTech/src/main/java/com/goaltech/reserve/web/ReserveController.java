@@ -1,5 +1,7 @@
 package com.goaltech.reserve.web;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +17,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.goaltech.login.vo.UserVO;
 import com.goaltech.login.web.LoginController;
 import com.goaltech.reserve.service.ReserveService;
 import com.goaltech.reserve.vo.GroundRuntimeResponseVO;
+import com.goaltech.reserve.vo.ReservationListVO;
 
 
 
@@ -32,11 +36,16 @@ public class ReserveController {
 	
 	@RequestMapping(value = "list.do", method = { RequestMethod.GET})
 	public String showReservations(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception {
-		List<Long> periodDays = reserveService.findPeriodDays();
-	    Long num = Long.parseLong(request.getParameter("code"));
-		GroundRuntimeResponseVO runtimeVO = reserveService.selectByRuntime(num);
-		model.addAttribute("periodDays", periodDays);
-		model.addAttribute("runtimeVO", runtimeVO);
+		
+		LocalDate now = LocalDate.now(); //현재시간
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");  //날짜포멧지정    
+		String ground_id = request.getParameter("code");
+		String today = now.format(formatter);
+		
+		ReservationListVO ReservationListVO = new ReservationListVO();
+		ReservationListVO.setGround_id(ground_id);;
+		ReservationListVO.setToday(today);;
+		
 		return "com/reservation/list";
 	}
     

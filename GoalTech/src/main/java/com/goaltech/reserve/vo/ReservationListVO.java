@@ -6,7 +6,21 @@ public class ReservationListVO {
 	private String start_time;
 	private String end_time;
 	private String user_id;
+	private String ground_id;
+	private String today;
 	
+	public String getGround_id() {
+		return ground_id;
+	}
+	public void setGround_id(String ground_id) {
+		this.ground_id = ground_id;
+	}
+	public String getToday() {
+		return today;
+	}
+	public void setToday(String today) {
+		this.today = today;
+	}
 	public String getBook_date() {
 		return book_date;
 	}

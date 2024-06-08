@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/include/header.jsp" %>
-<%Long id = ; %>
 	<div>
 	<img src ="/img/choice_1.png" onclick="list.do?code=01">
 	</div>
@@ -14,7 +13,6 @@
 
 <div class="container">
 <!-- 만약  id값이 있다면? 아래 소스 호출 -->
-<%if(id!=null){ %>
 	<div>
 		<h1> ${runtimeVO.name} 시작시간 : ${runtimeVO.startTime}</h1>
 		<h1> ${runtimeVO.name} 종료시간 : ${runtimeVO.endTime}</h1>
@@ -32,6 +30,5 @@
 			<% } %>
 		</ul>
 	</div>
-	<%} %>
 </div>
 <%@include file="/include/footer.jsp" %>

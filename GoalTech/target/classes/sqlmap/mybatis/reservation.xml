@@ -42,16 +42,16 @@
 		from
 		(
 			WITH RECURSIVE date_range AS ( 
-				SELECT STR_TO_DATE(${today}, '%Y%m%d') AS book_date
+				SELECT STR_TO_DATE(#{today}, '%Y%m%d') AS book_date
 					UNION ALL 	
 				SELECT DATE_ADD(_before.book_date, INTERVAL 1 DAY) AS book_date
 				FROM date_range AS _before
-				WHERE DATEDIFF(_before.book_date, STR_TO_DATE(${today}, '%Y%m%d')) < 14
+				WHERE DATEDIFF(_before.book_date, STR_TO_DATE(#{today}, '%Y%m%d')) < 14
 			) 
 			SELECT book_date FROM date_range) sdate,
 			TIME_CODE ) bc
 		left join (select * from BOOK WHERE PERMIT ='1')b on bc.TIME_CODE_ID  = b.TIME_CODE_ID and DATE_FORMAT(bc.book_date,'%Y-%m-%d') = DATE_FORMAT(b.book_datetime,'%Y-%m-%d')
-		where bc.time_code_id BETWEEN (SELECT g.START_TIME  from GROUND g where g.GROUND_ID = ${ground_id} ) and (SELECT g.END_TIME  from GROUND g where g.GROUND_ID =${ground_id})
+		where bc.time_code_id BETWEEN (SELECT g.START_TIME  from GROUND g where g.GROUND_ID = #{ground_id} ) and (SELECT g.END_TIME  from GROUND g where g.GROUND_ID =#{ground_id})
 		ORDER by bc.book_date, bc.time_code_id
 		]]>
 	</select>
