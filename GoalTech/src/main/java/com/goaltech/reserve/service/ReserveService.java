@@ -9,5 +9,5 @@ public interface ReserveService {
 	public List<Long> findPeriodDays();
 	public void insertReservation();
 	public GroundRuntimeResponseVO selectByRuntime(Long code);
-	public ReservationListVO selectByList(String code,String date);
+	public List<ReservationListVO> selectByList(String code,String date);
 }
