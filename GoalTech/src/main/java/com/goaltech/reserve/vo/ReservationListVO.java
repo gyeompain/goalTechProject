@@ -1,5 +1,6 @@
 package com.goaltech.reserve.vo;
 
+
 public class ReservationListVO {
 	private String book_date;
 	private String time_code_id;
