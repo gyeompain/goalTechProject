@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/include/header.jsp" %>
-<%@page import="com.goaltech.reserve.vo.ReservationListVO"%>
+<%@page import="com.goaltech.reserve.vo.ReservationListVO" %>
 
 	<div>
 	<img src ="/img/choice_1.png" onclick="list.do?code=01">
@@ -27,5 +27,6 @@
 			<% } %>
 		</ul>
 	</div>
+
 </div>
 <%@include file="/include/footer.jsp" %>
