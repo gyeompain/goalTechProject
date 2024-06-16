@@ -23,7 +23,7 @@
 				   ReservationListVO day = days.get(i); 
 			%>
 		
-			 <%= day.getBook_date() %><br>
+			 <%= day.getBook_date() %>/<%= day.getStart_time() %> <br>
 			<% } %>
 		</ul>
 	</div>

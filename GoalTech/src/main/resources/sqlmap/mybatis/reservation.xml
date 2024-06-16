@@ -12,11 +12,11 @@
 	</resultMap>
 	
 	<resultMap type = "ReservationListVO" id = "ReservationListVO">
-	    <result property="book_date" column="bc.book_date" />
-		<result property="time_code_id" column="bc.TIME_CODE_ID" />
-		<result property="start_time" column="bc.START_TIME" />
-		<result property="end_time" column="bc.END_TIME" />
-		<result property="user_id" column="b.id" />
+	    <result property="book_date" column="book_date" />
+		<result property="time_code_id" column="TIME_CODE_ID" />
+		<result property="start_time" column="START_TIME" />
+		<result property="end_time" column="END_TIME" />
+		<result property="user_id" column="id" />
 	</resultMap>
 	
 	<resultMap type = "ReservationRequestVO" id = "ReservationRequestVO">
@@ -44,16 +44,16 @@
 		from
 		(
 			WITH RECURSIVE date_range AS ( 
-				SELECT STR_TO_DATE(#{param2}, '%Y%m%d') AS book_date
+				SELECT STR_TO_DATE(#{arg1}, '%Y%m%d') AS book_date
 					UNION ALL 	
 				SELECT DATE_ADD(_before.book_date, INTERVAL 1 DAY) AS book_date
 				FROM date_range AS _before
-				WHERE DATEDIFF(_before.book_date, STR_TO_DATE(#{param2}, '%Y%m%d')) < 14
+				WHERE DATEDIFF(_before.book_date, STR_TO_DATE(#{arg1}, '%Y%m%d')) < 14
 			) 
 			SELECT book_date FROM date_range) sdate,
 			TIME_CODE ) bc
 		left join (select * from BOOK WHERE PERMIT ='1')b on bc.TIME_CODE_ID  = b.TIME_CODE_ID and DATE_FORMAT(bc.book_date,'%Y-%m-%d') = DATE_FORMAT(b.book_datetime,'%Y-%m-%d')
-		where bc.time_code_id BETWEEN (SELECT g.START_TIME  from GROUND g where g.GROUND_ID = #{param1} ) and (SELECT g.END_TIME  from GROUND g where g.GROUND_ID =#{param1})
+		where bc.time_code_id BETWEEN (SELECT g.START_TIME  from GROUND g where g.GROUND_ID = #{arg0} ) and (SELECT g.END_TIME  from GROUND g where g.GROUND_ID =#{arg0})
 		ORDER by bc.book_date, bc.time_code_id
 		]]>
 	</select>
