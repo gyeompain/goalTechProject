@@ -12,15 +12,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.goaltech.login.vo.UserVO;
 import com.goaltech.login.web.LoginController;
 import com.goaltech.reserve.service.ReserveService;
-import com.goaltech.reserve.vo.GroundRuntimeResponseVO;
+import com.goaltech.reserve.service.ReserveServiceImpl;
 import com.goaltech.reserve.vo.ReservationListVO;
 
 
@@ -39,13 +37,22 @@ public class ReserveController {
 		
 		LocalDate now = LocalDate.now(); //현재시간
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");  //날짜포멧지정    
-		String ground_id = request.getParameter("code");
+		//String ground_id = request.getParameter("code");
+		String ground_id = "01";
+		System.out.println("1");
 		String today = now.format(formatter);
+		System.out.println("2");
+
 		
-		ReservationListVO ReservationListVO = new ReservationListVO();
-		ReservationListVO.setGround_id(ground_id);;
-		ReservationListVO.setToday(today);;
+		System.out.println(ground_id);
+		System.out.println(today);
+
 		
+		List<ReservationListVO> gudanList = reserveService.selectByList(ground_id,today);
+		request.setAttribute("GudanList", gudanList);
+		System.out.println(gudanList.get(1));
+		System.out.println("3");
+
 		return "com/reservation/list";
 	}
     

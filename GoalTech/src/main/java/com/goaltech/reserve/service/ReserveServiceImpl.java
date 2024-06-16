@@ -1,10 +1,8 @@
 package com.goaltech.reserve.service;
 
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -43,13 +41,18 @@ public class ReserveServiceImpl implements ReserveService {
 	}
 	
 	@Override
-	public ReservationListVO selectByList(String code,String date) {
-		Date now = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+	public List<ReservationListVO> selectByList(String ground_id,String today) {
+//		Date now = new Date();
+//		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
 		//String today = formatter.format(now);
-		String today = "20240518";
-		String ground_id = "01";
-		ReservationListVO listVO = reserveMapper.selectByList(ground_id,today);
+//		String today = "20240518";
+//		String ground_id = "01";
+//		System.out.println(today);
+		System.out.println("=impl=");
+		System.out.println(ground_id);
+		System.out.println(today);
+		List<ReservationListVO> listVO = reserveMapper.selectByList(ground_id,today);
+		System.out.println("Å×½ºÆ®" + listVO.get(0));
 		return listVO;
 	}	
 

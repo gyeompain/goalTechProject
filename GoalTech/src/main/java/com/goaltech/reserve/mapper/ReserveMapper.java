@@ -1,5 +1,7 @@
 package com.goaltech.reserve.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.goaltech.reserve.vo.GroundRuntimeResponseVO;
@@ -11,5 +13,5 @@ public interface ReserveMapper {
 
 	public void insertReservation(ReservationRequestVO requestVO);
 	public GroundRuntimeResponseVO selectByRuntime(Long ground_code);
-	public ReservationListVO selectByList(String ground_id, String today);
+	public List<ReservationListVO> selectByList(String ground_id, String today);
 }
