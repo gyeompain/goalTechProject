@@ -54,7 +54,7 @@
 <body>
 <form class="login-form" action="login_proc.do" method="post">
 id<input type="text" id="user_id" name="user_id"> <br>
-pw<input type="text" id="user_pw" name="user_pw">
+pw<input type="password" id="user_pw" name="user_pw">
 
 <input type="submit" value="로그인">
 </form>

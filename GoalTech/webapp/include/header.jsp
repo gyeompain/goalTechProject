@@ -27,9 +27,7 @@
       <li><a href="list.do" class="nav-link px-2">예약하기</a></li>
     </ul>
 
-    <div class="col-md-3 text-end">
-      <i class="bi bi-calendar-check-fill fs-3" style="vertical-align:middle;"></i>
-      <i class="bi bi-person-circle fs-3" style="vertical-align:middle;"></i>
+    
       <% %>
       
       <!-- 로그인 했을 시 메뉴처리 -->
@@ -37,6 +35,12 @@
       <a href="login.do" class="btn btn-outline-primary me-2" tabindex="-1" role="button" aria-disabled="true">로그인</a>
       <a href="join.do" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">회원가입</a>
     </div>
-    <%} %>
+    <%}else{
+    	
+    %>
+    <div class="col-md-3 text-end">
+      <i class="bi bi-calendar-check-fill fs-3" style="vertical-align:middle;"></i>
+      <a href="logout.do"><i class="bi bi-person-circle fs-3" style="vertical-align:middle;"></i></a>
+      <%} %>
   </header>
 </div>
