@@ -119,5 +119,11 @@ public class LoginController {
 
 
 	}
+	
+	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
+		session.invalidate();
+		return "main";
+	}
 
 }
