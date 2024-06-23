@@ -1,11 +1,10 @@
 <!-- Footer-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <footer class="bg-black text-center py-5">
 	<div class="container px-5">
 		<div class="text-white-50 small">
-			<div class="mb-2">&copy; GoalTech 2024. All Rights
-				Reserved.</div>
+			<div class="mb-2">&copy; GoalTech 2024. All Rights Reserved.</div>
 			<a href="#!">Privacy</a> <span class="mx-1">&middot;</span> <a
 				href="#!">Terms</a> <span class="mx-1">&middot;</span> <a href="#!">FAQ</a>
 		</div>
@@ -36,9 +35,9 @@
 					</div>
 					<!-- Phone number input-->
 					<div class="form-floating mb-3">
-						<input class="form-control" id="phone" name="user_pw" type="password"
-							placeholder="password" data-sb-validations="required" /> <label
-							for="phone">비밀번호</label>
+						<input class="form-control" id="phone" name="user_pw"
+							type="password" placeholder="password"
+							data-sb-validations="required" /> <label for="phone">비밀번호</label>
 						<div class="invalid-feedback" data-sb-feedback="phone:required">A
 							비밀번호를 입력해주세요.</div>
 					</div>
@@ -58,6 +57,11 @@
 					<div class="d-grid">
 						<button class="btn btn-primary rounded-pill btn-lg"
 							id="submitButton" type="submit">Login</button>
+					</div>
+					<br>
+					<div class="d-grid">
+						<button class="btn btn-primary rounded-pill btn-lg" onclick="join.do"
+							id="submitButton" type="button">Join</button>
 					</div>
 				</form>
 			</div>
