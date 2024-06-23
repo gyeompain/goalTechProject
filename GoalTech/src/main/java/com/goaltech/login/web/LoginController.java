@@ -59,7 +59,7 @@ public class LoginController {
 		loginService.insertUser(vo);
 		model.addAttribute(vo);
 		session.setAttribute("User", vo);
-		return "redirect:main.jsp";
+		return "main";
 
 	}
 
