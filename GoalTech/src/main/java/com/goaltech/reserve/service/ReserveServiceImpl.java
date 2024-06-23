@@ -51,7 +51,7 @@ public class ReserveServiceImpl implements ReserveService {
 		System.out.println("=impl=");
 		System.out.println(ground_id);
 		System.out.println(today);
-		List<ReservationListVO> listVO = reserveMapper.selectByList(ground_id,today);
+		List<ReservationListVO> listVO = reserveMapper.selectByList(today,ground_id);
 		System.out.println("Å×½ºÆ®" + listVO.get(0).getBook_date());
 		return listVO;
 	}	
