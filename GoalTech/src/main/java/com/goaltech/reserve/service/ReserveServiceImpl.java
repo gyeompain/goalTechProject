@@ -52,7 +52,7 @@ public class ReserveServiceImpl implements ReserveService {
 		System.out.println(ground_id);
 		System.out.println(today);
 		List<ReservationListVO> listVO = reserveMapper.selectByList(ground_id,today);
-		System.out.println("테스트" + listVO.get(0));
+		System.out.println("테스트" + listVO.get(0).getBook_date());
 		return listVO;
 	}	
 

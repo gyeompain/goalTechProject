@@ -9,7 +9,6 @@
 	<img src ="/img/main_01.png">
 	</div>
 	<div>
-
 		<a href="list.do?code=01">A구장</a>
 		<a href="list.do?code=02">B구장</a>
 	</div>

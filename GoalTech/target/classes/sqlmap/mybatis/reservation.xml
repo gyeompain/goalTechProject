@@ -12,11 +12,11 @@
 	</resultMap>
 	
 	<resultMap type = "ReservationListVO" id = "ReservationListVO">
-	    <result property="book_date" column="bc.book_date" />
-		<result property="time_code_id" column="bc.TIME_CODE_ID" />
-		<result property="start_time" column="bc.START_TIME" />
-		<result property="end_time" column="bc.END_TIME" />
-		<result property="user_id" column="b.id" />
+	    <result property="book_date" column="book_date" />
+		<result property="time_code_id" column="TIME_CODE_ID" />
+		<result property="start_time" column="START_TIME" />
+		<result property="end_time" column="END_TIME" />
+		<result property="user_id" column="id" />
 	</resultMap>
 	
 	<resultMap type = "ReservationRequestVO" id = "ReservationRequestVO">
@@ -27,6 +27,8 @@
 		<result property="book_datetime" column="book_datetime" />
 		<result property="time_code_id" column="TIME_CODE_ID" />
 	</resultMap>	
+	
+	
 	
 	<select id="selectByRuntime" parameterType="Long" resultMap="GroundRuntimeResponseVO">
 		SELECT GROUND_NAME,GROUND_ID, START_TIME, END_TIME

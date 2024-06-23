@@ -3,7 +3,6 @@
     pageEncoding="UTF-8"%>
 <%@include file="/include/header.jsp" %>
 <%@page import="com.goaltech.reserve.vo.ReservationListVO" %>
-
 	<div>
 	<img src ="/img/choice_1.png" onclick="list.do?code=01">
 	</div>
@@ -12,6 +11,7 @@
 	</div>
 <div>
 </div>
+
 
 <div class="container">
 <!-- 만약  id값이 있다면? 아래 소스 호출 -->
@@ -23,10 +23,10 @@
 				   ReservationListVO day = days.get(i); 
 			%>
 		
-			 <%= day.getBook_date() %><br>
+			 <%= day.getBook_date() %>/<%= day.getStart_time() %> <br>
 			<% } %>
 		</ul>
 	</div>
-
+	
 </div>
 <%@include file="/include/footer.jsp" %>
